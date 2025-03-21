@@ -1,0 +1,13 @@
+CY Accidents Count = TOTALYTD(COUNT(Table1[Accident_Index]), 'Calendar'[Date])
+
+CY Casualties = TOTALYTD(SUM(Table1[Number_of_Casualties]), 'Calendar'[Date])
+
+
+PY Accidents = CALCULATE(COUNT(Table1[Accident_Index]), SAMEPERIODLASTYEAR('Calendar'[Date]))
+
+
+PY Causalties = CALCULATE(sum(Table1[Number_of_Casualties]), SAMEPERIODLASTYEAR('Calendar'[Date]))
+
+YoY Accidents = ([CY Accidents Count] - [PY Accidents]) / [CY Accidents Count]
+
+YoY Casualties = ([CY Casualties] - [PY Causalties]) / [PY Causalties]
